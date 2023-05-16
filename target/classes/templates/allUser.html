@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>all user</title>
+
+</head>
+<body>
+<form action="/search" method="get">
+    <label for="keyword">Keyword:</label>
+    <input type="text" id="keyword" name="keyword">
+    <button type="submit">Search</button>
+</form>
+<br>
+<table border="1" >
+    <thead>
+    <th>id</th>
+    <th>name</th>
+    <th>father_name</th>
+    <th>mother_name</th>
+    <th>Password</th>
+    <th>location</th>
+    <th colspan="2">operation</th>
+    </thead>
+
+    <tr th:each="user:${Users}">
+        <td th:number="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.father_name}"></td>
+        <td th:text="${user.mother_name}"></td>
+        <td th:password="${user.Password}"></td>
+        <td th:text="${user.location}"></td>
+        <td ><a th:href="@{/editUser/{id}(id=${user.id})}">edit</a></td>
+        <td><a th:href="@{/deleteUser/{id}(id=${user.id})}">delete</a></td>
+
+
+    </tr>
+</table>
+</body>
+</html>
